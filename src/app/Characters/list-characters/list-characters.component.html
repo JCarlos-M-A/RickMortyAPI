@@ -1,0 +1,41 @@
+<div class="cuerpo bg-slate-800 min-h-1/2 py-20 px-10 flex gap-5 flex-wrap justify-center">
+
+    <div *ngFor="let character of personajes" class="w-[45%]">
+      <div class="card flex bg-slate-900 h-60 rounded-lg">
+        <div class="img">
+          <img class="rounded-tl-lg h-60 rounded-bl-lg"
+            src={{character.image}} alt="img 1" />
+        </div>
+        <div class="contenido h-10 p-5">
+          <p class="text-2xl text-white font-bold hover:text-orange-600 hover:cursor-pointer">{{ character.name }}
+          </p>
+          <div class="text-white mb-5 flex items-center">
+            <div *ngIf="character.status == 'Alive'">
+              <div class="rounded-full w-2 h-2 bg-green-500 mr-2"></div>
+            </div>
+            <div *ngIf="character.status == 'Dead'">
+              <div class="rounded-full w-2 h-2 bg-red-700 mr-2"></div>
+            </div>
+            {{ character.status ? "Alive" : "Dead" }} - {{character.specie}}
+          </div>
+          <div>
+            <div class="text-slate-700">
+              Last known location:
+            </div>
+            <div class="text-white hover:text-orange-600 hover:cursor-pointer">
+              {{character.location.name}}
+            </div>
+          </div>
+          <div>
+            <div class="text-slate-700">
+              First seen in:
+            </div>
+            <div class="text-white hover:text-orange-600 hover:cursor-pointer">
+              {{character.episodes[0].name}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

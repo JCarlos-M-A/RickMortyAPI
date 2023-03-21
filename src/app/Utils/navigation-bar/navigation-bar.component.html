@@ -1,0 +1,36 @@
+<nav class="px-4 py-2 selection:bg-gray-700 selection:text-orange-500">
+    <div class="flex justify-between">
+        <div class="h-10 w-10">
+            <a [routerLink]="['/']" routerLinkActive="router-link-active">
+                <img src="https://i5.walmartimages.com/asr/bcc4085e-c311-4886-a7a4-aa58127883d7.5958f8a36f96aa4c08dbc4a8a580e57c.png"
+                    alt="img 1" />
+            </a>
+        </div>
+        <div class="flex gap-5">
+            <select class="outline-none select-none text-lg font-bold" #opcionSeleccionado (change)="capturar()">
+                <option>--Lists--</option>
+                <option value="/list/listCharacters">
+                    List characters
+                </option>
+                <option value="/list/listEpisodes">
+                    List episodes
+                </option>
+                <option value="/list/listLocations">
+                    List locations
+                </option>
+            </select>
+
+            <p (click)="openModalEpisode()" class="text-lg font-bold grid items-center hover:cursor-pointer hover:text-orange-500">Add episode</p>
+            <p class="text-lg font-bold grid items-center hover:cursor-pointer hover:text-orange-500">
+            <p (click)="openModalLocation()" class="text-lg font-bold grid items-center hover:cursor-pointer hover:text-orange-500">Add location</p>
+            <p (click)="openModalCharacter()"
+                class="border-2 select-none font-bold border-yellow-500 hover:bg-orange-500 hover:text-white px-2 grid items-center rounded-md hover:cursor-pointer">
+                ADD CHARACTER</p>
+        </div>
+    </div>
+</nav>
+
+<app-add-episode *ngIf="verdadEpisode" (cambioEpisode)="hideEpisodeModal()"></app-add-episode>
+<app-add-characters *ngIf="verdadCaracter" (cambioCharacter)="hideCaracterModal()"></app-add-characters>
+<app-add-locations *ngIf="verdadLocation" (cambioLocation)="hideLocationModal()"></app-add-locations>
+<app-alert *ngIf="verdadAlert" (cambioAlert)="hideAlertModal()"></app-alert>
