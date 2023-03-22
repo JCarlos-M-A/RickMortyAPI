@@ -26,6 +26,7 @@ export class AddEpisodeComponent {
 
   add(): void{
     console.log("enviar");
+    this.cambioEpisode.emit();
     const name: String = this.name.nativeElement.value;
     const air_date: Date = this.air_date.nativeElement.value;
     const episode: String = this.episode.nativeElement.value;

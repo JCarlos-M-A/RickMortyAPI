@@ -26,6 +26,7 @@ export class AddLocationsComponent {
 
   add() {
     console.log("enviar");
+    this.cambioLocation.emit();
     const name: String = this.name.nativeElement.value;
     const type: String = this.type.nativeElement.value;
     const dimension: String = this.dimension.nativeElement.value;

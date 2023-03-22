@@ -19,6 +19,7 @@ export class AddCharactersComponent {
 
   imagen="https://rickandmortyapi.com/api/character/avatar/361.jpeg";
   status = true;
+  
   onChangeStatus(status: boolean) {  
     //
     this.status = !this.status;
@@ -46,6 +47,7 @@ export class AddCharactersComponent {
 
   add(): void{
     console.log("enviar");
+    this.cambioCharacter.emit();
     const name: String = this.name.nativeElement.value;
     const status: Boolean = this.status;
     //console.log(this.status.nativeElement.value);

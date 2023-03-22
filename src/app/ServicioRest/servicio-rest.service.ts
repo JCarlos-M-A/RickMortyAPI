@@ -11,6 +11,7 @@ export class ServicioRestService {
   public locations: any[] = [];
   public episodes: any[] = [];
   public personajes: any[] = [];
+  public verdadAlert: boolean = false;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -55,8 +56,20 @@ export class ServicioRestService {
 
     this.http.post('http://localhost:8080/api/locations', datos, { observe: "response" })
       .subscribe((resp: any) => {
-        //console.log(resp);
-        this.router.navigate(['/list/listLocations']);
+        console.log(resp);
+        this.locations.push(resp.body);
+        //this.router.navigate(['/list/listLocations']);
+      });
+  }
+
+  public apiEliminarLocation(id: number) {
+    this.http.delete('http://localhost:8080/api/locations/'+id, { observe: "response" })
+      .subscribe((resp: any) => {
+        console.log(resp);
+        if(resp.status==200){
+          this.eliminarDeArray(this.locations, id);
+        }
+        //this.router.navigate(['/list/listLocations']);
       });
   }
 
@@ -70,7 +83,19 @@ export class ServicioRestService {
     this.http.post('http://localhost:8080/api/episodes', datos, { observe: "response" })
       .subscribe((resp: any) => {
         //console.log(resp);
-        this.router.navigate(['/list/listEpisodes']);
+        this.episodes.push(resp.body)
+        //this.router.navigate(['/list/listEpisodes']);
+      });
+  }
+
+  public apiEliminarEpisodes(id: number) {
+    this.http.delete('http://localhost:8080/api/episodes/'+id, { observe: "response" })
+      .subscribe((resp: any) => {
+        console.log(resp);
+        if(resp.status==200){
+          this.eliminarDeArray(this.episodes, id);
+        }
+        //this.router.navigate(['/list/listLocations']);
       });
   }
 
@@ -84,10 +109,17 @@ export class ServicioRestService {
       episode: episode,
 	    image: image
 }
+    this.verdadAlert = true;
     this.http.post('http://localhost:8080/api/characters', datos, { observe: "response" })
       .subscribe((resp: any) => {
-        //console.log(resp);
-        this.router.navigate(['/list/listCharacters']);
+        //console.log(resp.body);
+        this.personajes.push(resp.body);
+        //this.router.navigate(['/list/listCharacters']);
       });
+  }
+
+  eliminarDeArray(array1: any, id: number){
+    let index = array1.findIndex((item: any) => item.id === id);
+    array1.splice(index, 1);
   }
 }

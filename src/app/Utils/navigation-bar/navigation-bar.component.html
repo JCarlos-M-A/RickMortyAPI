@@ -7,7 +7,7 @@
             </a>
         </div>
         <div class="flex gap-5">
-            <select class="outline-none select-none text-lg font-bold" #opcionSeleccionado (change)="capturar()">
+            <select class="outline-none select-none text-lg font-bold" (change)="capturar()" #opcionSeleccionado>
                 <option>--Lists--</option>
                 <option value="/list/listCharacters">
                     List characters

@@ -11,6 +11,10 @@ export class ListLocationsComponent {
     this.servicio.apiListaLocations();
   }
 
+  eliminarLocation(id: number){
+    this.servicio.apiEliminarLocation(id);
+  }
+
   get locations(){
     return this.servicio.locations;
   }

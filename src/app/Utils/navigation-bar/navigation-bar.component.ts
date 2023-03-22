@@ -41,9 +41,11 @@ export class NavigationBarComponent {
     this.verdadLocation = false;
   }
 
-  
   openModalAlert() {
     this.verdadAlert = true;
+    setTimeout(() => {
+      this.verdadAlert = false;
+    }, 3500);
   }
   hideAlertModal() {
     this.verdadAlert = false;

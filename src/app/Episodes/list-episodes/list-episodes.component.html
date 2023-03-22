@@ -1,5 +1,24 @@
-<p>list-episodes works!</p>
+<div class="min-h-screen w-full bg-slate-800">
+    <h1 class="text-white text-3xl font-bold text-center py-3">
+        Episodes
+    </h1>
+    <div class="contenedor w-full flex flex-col justify-center p-20">
+        <table class="default text-white text-2xl">
+            <tr class="font-bold border-gray-400 border-b-2 my-2">
+                <td>Nombre</td>
+                <td>Fecha de lanzamiento</td>
+                <td>Episodio</td>
+                <td class="flex justify-center">Acciones</td>
+            </tr>
+            <tr *ngFor="let episode of episodes">
+                <td>{{episode.name}}</td>
+                <td>{{episode.air_date.substring(0, 10)}}</td>
+                <td>{{episode.episode}}</td>
+                <td class="flex justify-center">
+                    <button (click)="eliminarEpisode(episode.id)" class="px-6 py-2 bg-red-700 rounded-lg hover:bg-red-800">Delete</button>
+                </td>
+            </tr>
+        </table>
+    </div>
 
-<div *ngFor="let episode of episodes">
-    {{episode.name}}
 </div>

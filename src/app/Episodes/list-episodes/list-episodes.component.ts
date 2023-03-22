@@ -10,6 +10,10 @@ export class ListEpisodesComponent {
     this.servicio.apiListaEpidodes();
   }
 
+  eliminarEpisode(id: number){
+    this.servicio.apiEliminarEpisodes(id);
+  }
+
   get episodes(){
     return this.servicio.episodes;
   }
