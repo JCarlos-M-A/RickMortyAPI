@@ -10,6 +10,20 @@ export class ListCharactersComponent {
     this.servicio.apiListaPersonajes();
   }
 
+  verdadCaracter: boolean = false;
+  nameEdit: string = "";
+  imgEdit: string = "";
+  hideCaracterModal(){
+    //
+  }
+
+  editar(name: string, image: string, status: boolean, specie: string, location: any, episodes: any){
+    console.log(image)
+    this.verdadCaracter=true;
+    this.nameEdit = name;
+    this.imgEdit = image;
+  }
+
   get personajes(){
     return this.servicio.personajes;
   }

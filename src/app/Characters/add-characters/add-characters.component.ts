@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { ServicioRestService } from 'src/app/ServicioRest/servicio-rest.service';
 
 @Component({
@@ -8,6 +8,8 @@ import { ServicioRestService } from 'src/app/ServicioRest/servicio-rest.service'
 export class AddCharactersComponent {
 
   @Output() cambioCharacter: EventEmitter<boolean> = new EventEmitter();
+  @Input() nameEdit: string = "";
+  @Input() imgEdit: string = "";
 
     /**
    *ctor
@@ -17,9 +19,13 @@ export class AddCharactersComponent {
     this.restService.apiListaLocations();
    }
 
-  imagen="https://rickandmortyapi.com/api/character/avatar/361.jpeg";
+  imagen="https://rickandmortyapi.com/api/character/avatar/281.jpeg";
   status = true;
-  
+  ngOnInit() {
+    //
+    this.imagen=this.imgEdit;
+  }
+
   onChangeStatus(status: boolean) {  
     //
     this.status = !this.status;
